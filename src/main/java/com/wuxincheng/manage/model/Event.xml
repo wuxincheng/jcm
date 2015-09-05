@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Event">
+  <typeAlias alias="Event" type="com.wuxincheng.manage.model.Event" />
+
+  <resultMap class="Event" id="EventMapping">
+    <result property="eventid" column="eventid" />
+    <result property="eventIndexImg" column="eventIndexImg" />
+    <result property="eventTitle" column="eventTitle" />
+    <result property="eventSubTitle" column="eventSubTitle" />
+    <result property="eventContent" column="eventContent" />
+    <result property="eventType" column="eventType" />
+    <result property="eventTag" column="eventTag" />
+    <result property="readSum" column="readSum" />
+    <result property="likeSum" column="likeSum" />
+    <result property="commentSum" column="commentSum" />
+    <result property="creater" column="creater" />
+    <result property="createTime" column="createTime" />
+    <result property="updateTime" column="updateTime" />
+    <result property="eventState" column="eventState" />
+  </resultMap>
+  
+  <select id="queryPagerByMap" parameterClass="java.util.Map" resultMap="EventMapping">
+    SELECT t.* FROM nkt_event t
+  </select>
+
+</sqlMap>
