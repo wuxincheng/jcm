@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="nkt" uri="/WEB-INF/nkt.tld"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,7 @@
   <div class="container main-container">
     <h5 class="page-header page-target">发布管理</h5>
     <a href="${root}/manage/event/edit">
-      <button type="button" class="btn btn-primary btn-sm">新增发布内容</button>
+      <button type="button" class="btn btn-primary btn-sm">新增</button>
     </a>
     <hr />
     <div class="table-responsive">
@@ -24,19 +25,10 @@
         <thead>
           <tr>
             <th style="text-align: center;">序号</th>
-            <th style="text-align: center;">排序</th>
-            <th style="text-align: center;">
-            </th>
-            <th style="text-align: center;">标题</th>
-            <th style="text-align: center;">来源</th>
-            <!-- 
-            <th style="text-align: center;">真象指数</th>
-             -->
+            <th style="text-align: center;">类型</th>
+            <th style="text-align: left;">标题</th>
             <th style="text-align: center;">阅读数</th>
-            <th style="text-align: center;">发布时间</th>
-            <!-- 
-            <th style="text-align: center;">发表人</th>
-             -->
+            <th style="text-align: center;">操作时间</th>
             <th style="text-align: center;">状态</th>
             <th style="text-align: center;">操作</th>
           </tr>
@@ -44,97 +36,31 @@
         <tbody>
           <c:set var="totalRead" value="0" />
           <c:choose>
-            <c:when test="${not empty pager.news}">
-              <c:forEach items="${pager.news}" var="obj" varStatus="s">
+            <c:when test="${not empty pager.events}">
+              <c:forEach items="${pager.events}" var="obj" varStatus="s">
                 <tr>
                   <td style="text-align: center;">${s.index+1}</td>
+                  <td style="text-align: center;"><span class="label label-primary">${nkt:eventType(obj.eventType)}</span></td>
+                  <td style="text-align: left;">${obj.eventTitle}</td>
+                  <td style="text-align: center;">${obj.readSum}</td>
+                  <td style="text-align: center;">${obj.updateTime}</td>
                   <td style="text-align: center;">
-                    <c:if test="${'-1' eq obj.state}">
-                      <img src="${root}/assets/images/sort-up.png" onClick="moveUp(this);" style="cursor: pointer;" />
-                      <img src="${root}/assets/images/sort-down.png" onClick="moveDown(this);" style="cursor: pointer;" />
+                    <c:if test="${'1' eq obj.eventState}">
+                    <span class="label label-success">已发布</span>
                     </c:if>
-                    <c:if test="${'0' eq obj.state}">---</c:if>
-                  </td>
-                  <td style="text-align: center;">
-                    <c:if test="${'-1' eq obj.state}">
-                      <input type="checkbox" id="subcheck" value="${obj.id}" />
-                    </c:if>
-                  </td>
-                  <td style="text-align: left;">
-                    <a href="${obj.url}" target="_blank">
-                    <img src="${root}/imgbase/${obj.imgLocPath}" height="30px" width="30px" />&nbsp;
-                    ${obj.title}
-                    </a>
-                  </td>
-                  <td style="text-align: left;">${obj.domain}<br>${obj.weChatPublicNO}</td>
-                  <!-- 
-                  <td style="text-align: right;"><fmt:formatNumber value="${obj.truthDegree}" pattern="#" type="number"/>%</td>
-                   -->
-                  <td style="text-align: right;">${obj.readerCount}</td>
-                  <td style="text-align: center;">${obj.createTime}</td>
-                  <!-- 
-                  <td style="text-align: left;">${obj.creator}</td>
-                   -->
-                  <td style="text-align: center;">
-                    <c:if test="${'0' eq obj.state}">
-                      <span class="text-success">已发布</span>
-                    </c:if> 
-                    <c:if test="${'-1' eq obj.state}">
-                      <a href="${root}/manage/news/send/send?newsId=${obj.id}">
-                        <button type="button" class="btn btn-primary btn-sm">发布</button>
-                      </a>
+                    <c:if test="${'0' eq obj.eventState}">
+                    <span class="label label-danger">未发布</span>
                     </c:if>
                   </td>
                   <td style="text-align: center;">
-                    <!-- 
-                    <a href="${root}/manage/news/send/comment?newsId=${obj.id}&commentId=${obj.commentId}">
-                      <button type="button" class="btn btn-primary btn-sm">评论</button></a>
-                     -->
-                    <a href="${root}/manage/news/send/edit?newsId=${obj.id}">
+                    <a href="${root}/manage/news/send/edit?eventid=${obj.eventid}">
                       <button type="button" class="btn btn-primary btn-sm">修改</button>
                     </a>
                     <button type="button" class="btn btn-primary btn-sm"
-                      onclick="if(confirm('您确定执行退回吗?')) document.location = '${root}/manage/news/send/rollback?newsId=${obj.id}';">退回</button>
+                      onclick="if(confirm('您确定执行退回吗?')) document.location = '${root}/manage/news/send/rollback?newsId=${obj.eventid}';">删除</button>
                   </td>
                 </tr>
               </c:forEach>
-              
-              <div class="tab-bottom-line"></div>
-
-              <ul class="pager">
-                <li
-                  <c:if test="${'1' eq pager.currentPage}">class="disabled"</c:if>>
-                  <a
-                  <c:if test="${pager.currentPage > 1}">href="${root}/manage/news/send/list?currentPage=1"</c:if>>首页</a>
-                </li>
-        
-                <li
-                  <c:if test="${'1' eq pager.currentPage}">class="disabled"</c:if>>
-                  <a
-                  <c:if test="${pager.currentPage > 1}">href="${root}/manage/news/send/list?currentPage=${pager.currentPage-1}"</c:if>>上一页</a>
-                </li>
-        
-                <li
-                  <c:if test="${pager.lastPage eq pager.currentPage}">class="disabled"</c:if>>
-                  <a
-                  <c:if test="${pager.currentPage < pager.lastPage}">href="${root}/manage/news/send/list?currentPage=${pager.currentPage+1}"</c:if>>下一页</a>
-                </li>
-        
-                <li
-                  <c:if test="${pager.lastPage eq pager.currentPage}">class="disabled"</c:if>>
-                  <a
-                  <c:if test="${pager.currentPage < pager.lastPage}">href="${root}/manage/news/send/list?currentPage=${pager.lastPage}"</c:if>>尾页</a>
-                </li>
-        
-                <li class="">&nbsp;</li>
-                <li class=""><strong>${pager.currentPage}/${pager.lastPage}</strong></li>
-                <li class="">&nbsp;</li>
-                <li class="disabled">共<strong>${pager.totalCount}</strong>条
-                </li>
-                <li class="">&nbsp;</li>
-                <li class="">每页显示<strong>${pageSize}</strong>条
-                </li>
-              </ul>
             </c:when>
             <c:otherwise>
               <div class="alert alert-info">

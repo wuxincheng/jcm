@@ -36,11 +36,11 @@ public class EventService {
 	 */
 	public Map<String, Object> queryForPager(String eventType, String currentPager, int pagerSize) {
 		if (StringUtils.isEmpty(eventType)) {
-			return null;
+			// return null;
 		}
 
 		if (StringUtils.isEmpty(EventType.getValue(eventType))) {
-			return null;
+			// return null;
 		}
 
 		Map<String, Object> pager = new HashMap<String, Object>();
@@ -64,6 +64,7 @@ public class EventService {
 		pager.put("countSum", countSum);
 		pager.put("events", events);
 		pager.put("currentPager", currentPager);
+		pager.put("pagerSize", pagerSize);
 
 		return pager;
 	}

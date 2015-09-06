@@ -23,5 +23,9 @@
   <select id="queryPagerByMap" parameterClass="java.util.Map" resultMap="EventMapping">
     SELECT t.* FROM nkt_event t
   </select>
+  
+  <select id="queryCountByEventType" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+    SELECT COUNT(*) FROM nkt_event t
+  </select>
 
 </sqlMap>
