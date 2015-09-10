@@ -29,4 +29,12 @@ public class EventDao extends BaseDao {
 		this.getSqlMapClientTemplate().delete("Event.deleteById", eventid);
 	}
 
+	public void update(Event event) {
+		this.getSqlMapClientTemplate().update("Event.update", event);
+	}
+
+	public void insert(Event event) {
+		this.getSqlMapClientTemplate().insert("Event.insert", event);
+	}
+
 }

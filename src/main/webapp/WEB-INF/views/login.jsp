@@ -116,7 +116,14 @@ body {
                     ${warning}
                   </div>
                 </div>
-
+              </c:if>
+              <c:if test="${not empty info}">
+                <div style="margin: 0px 30px 0px 30px" class="input-group">
+                  <div class="alert alert-warning" style="width: 218px; margin-bottom: 10px;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    ${info}
+                  </div>
+                </div>
               </c:if>
               <div style="margin: 0px 30px 10px 30px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> <input id="adminsLogin"

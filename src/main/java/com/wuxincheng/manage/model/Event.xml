@@ -21,11 +21,29 @@
   </resultMap>
   
   <select id="queryPagerByMap" parameterClass="java.util.Map" resultMap="EventMapping">
-    SELECT t.* FROM nkt_event t
+    SELECT t.* FROM nkt_event t WHERE eventType = #eventType#
   </select>
   
-  <select id="queryCountByEventType" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+  <select id="queryCountByEventType" parameterClass="java.lang.String" resultClass="java.lang.Integer">
     SELECT COUNT(*) FROM nkt_event t
   </select>
+  
+  <select id="queryDetailById" parameterClass="java.lang.String" resultMap="EventMapping">
+    SELECT t.* FROM nkt_event t WHERE eventid = #eventid#
+  </select>
+  
+  <insert id="insert" parameterClass="Event">
+    INSERT INTO nkt_event (eventIndexImg, eventTitle, eventSubTitle, eventContent, eventType, 
+      eventTag, readSum, likeSum, commentSum, creater, createTime, updateTime, eventState) 
+    VALUES (#eventIndexImg#, #eventTitle#, #eventSubTitle#, #eventContent#, #eventType#, 
+      #eventTag#, #readSum#, #likeSum#, #commentSum#, #creater#, #createTime#, #updateTime#, #eventState#)
+  </insert>
+  
+  <update id="update" parameterClass="Event">
+    UPDATE nkt_event SET eventIndexImg = #eventIndexImg#, eventTitle = #eventTitle#, 
+      eventSubTitle = #eventSubTitle#, eventContent = #eventContent#, eventType = #eventType#, 
+      creater = #creater#, updateTime = #updateTime#, eventState = #eventState#
+    WHERE eventid = #eventid#
+  </update>
 
 </sqlMap>

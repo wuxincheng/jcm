@@ -21,6 +21,15 @@
     </a>
     <hr />
     <div class="table-responsive">
+      <div class="event-tabs">
+        <ul class="nav nav-tabs nav-justified">
+          <c:forEach items="${eventTypeMap}" var="eventTypeObj">
+            <li <c:if test="${eventType == eventTypeObj.key}">class="active"</c:if> role="presentation">
+              <a href="${root}/manage/event/list?eventType=${eventTypeObj.key}">${eventTypeObj.value}</a>
+            </li>
+          </c:forEach>
+        </ul>
+      </div>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -53,11 +62,11 @@
                     </c:if>
                   </td>
                   <td style="text-align: center;">
-                    <a href="${root}/manage/news/send/edit?eventid=${obj.eventid}">
+                    <a href="${root}/manage/event/detail?eventid=${obj.eventid}">
                       <button type="button" class="btn btn-primary btn-sm">修改</button>
                     </a>
                     <button type="button" class="btn btn-primary btn-sm"
-                      onclick="if(confirm('您确定执行退回吗?')) document.location = '${root}/manage/news/send/rollback?newsId=${obj.eventid}';">删除</button>
+                      onclick="if(confirm('您确定要删除吗?')) document.location = '${root}/manage/news/send/rollback?newsId=${obj.eventid}';">删除</button>
                   </td>
                 </tr>
               </c:forEach>
@@ -66,7 +75,7 @@
               <div class="alert alert-info">
                 <button type="button" class="close" data-dismiss="alert"
                   aria-hidden="true">&times;</button>
-                <strong>提示：</strong>没有查询到发布信息！
+                <strong>提示：</strong>没有查询到发布 <b>${eventTypeValue}</b> 的信息！
               </div>
             </c:otherwise>
           </c:choose>

@@ -40,7 +40,6 @@ public class AdminsController extends BaseController {
 	@RequestMapping(value = "/list")
 	public String list(HttpServletRequest request, Model model) {
 		logger.info("显示管理员列表页面");
-		setMenuFlag(request, "admins");
 		
 		List<Admins> adminzs = adminsService.queryAll();
 		try {

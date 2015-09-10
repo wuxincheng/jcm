@@ -12,6 +12,7 @@
 
 <link href="${root}/assets/css/bootstrap.css" rel="stylesheet">
 <link href="${root}/assets/css/dashboard.css" rel="stylesheet">
+<link href="${root}/assets/css/style.css" rel="stylesheet">
 </head>
 <style type="text/css">
   .page-target {
@@ -51,7 +52,8 @@
         <ul class="nav navbar-nav navbar-left">
           <li><a href="${root}/admins/main"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
           <li><a href="${root}/manage/event/list"><span class="glyphicon glyphicon-th-list"></span> 发布管理</a></li>
-          <li><a href="${root}/manage/member/list"><span class="glyphicon glyphicon-th-list"></span> 成员管理</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-th-list"></span> 成员管理</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-th-list"></span> 管理员管理</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a data-toggle="modal" data-target=".logout-modal" href=""><span class="glyphicon glyphicon-log-out"></span> 退出系统</a></li>

@@ -1,5 +1,6 @@
 package com.wuxincheng.manage.service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.wuxincheng.manage.dao.EventDao;
 import com.wuxincheng.manage.model.Event;
 import com.wuxincheng.manage.model.EventType;
+import com.wuxincheng.util.DateUtil;
 
 @Service("eventService")
 public class EventService {
@@ -88,12 +90,53 @@ public class EventService {
 	 * @param event
 	 * @return
 	 */
-	public String save(Event event) throws Exception {
+	public String save(Event event, String currentUser) throws Exception {
+		String responseMessage = null;
 		// 检查数据项
+		if (StringUtils.isEmpty(event.getEventTitle())) {
+			responseMessage = "发布标题不能为空";
+			return responseMessage;
+		}
+
+		if (!"2".equals(event.getEventType())) { // 发布公告不需要验证图片和简介
+			if (StringUtils.isEmpty(event.getEventIndexImg())) {
+				responseMessage = "首页图片链接不能为空";
+				return responseMessage;
+			}
+
+			if (StringUtils.isEmpty(event.getEventSubTitle())) {
+				responseMessage = "发布简介不能为空";
+				return responseMessage;
+			}
+		}
+
+		if (StringUtils.isEmpty(event.getEventContent())) {
+			responseMessage = "发布内容不能为空";
+			return responseMessage;
+		}
+
+		String currentDate = DateUtil.getCurrentDate(new Date(), "yyyy-MM-dd HH:mm:ss");
 		
-		// TODO Auto-generated method stub
-		
-		return null;
+		if (StringUtils.isNotEmpty(event.getEventid())) { 
+			// 封装一些数据
+			event.setUpdateTime(currentDate);
+			event.setCreater(currentUser);
+			// 更新
+			eventDao.update(event);
+		} else {
+			// 封装一些数据
+			event.setReadSum(0);
+			event.setLikeSum(0);
+			event.setCommentSum(0);
+			event.setEventTag(event.getEventType());
+			event.setCreater(currentUser);
+			event.setCreateTime(currentDate);
+			event.setUpdateTime(currentDate);
+			// 新增
+			eventDao.insert(event);
+		}
+
+		return responseMessage;
 	}
 
 	/**
@@ -103,7 +146,7 @@ public class EventService {
 	 */
 	public void deleteById(String eventid) {
 		if (StringUtils.isEmpty(eventid)) {
-			return ;
+			return;
 		}
 		eventDao.deleteById(eventid);
 	}

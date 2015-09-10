@@ -1,7 +1,21 @@
 
 .login-left-right {
-    color: #e74c3c;
-	font-size: 28px;
-	font-weight: bold;
-	font-family: 华文行楷;
-} 
+  color: #e74c3c;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 华文行楷;
+}
+
+.alert-info {
+  
+}
+
+.event-tabs {
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.event-tabs .active {
+  font-size: 15px;
+  font-weight: bold;
+}

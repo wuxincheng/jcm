@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.wuxincheng.manage.controller.BaseController;
 import com.wuxincheng.manage.model.Admins;
 import com.wuxincheng.manage.service.AdminsService;
 import com.wuxincheng.util.Constants;
@@ -18,7 +19,7 @@ import com.wuxincheng.util.Validation;
 
 @Controller
 @RequestMapping("/admins")
-public class Login {
+public class Login extends BaseController {
 
 	private static Logger logger = LoggerFactory.getLogger(Login.class);
 
@@ -28,8 +29,9 @@ public class Login {
 	private AdminsService adminsService;
 
 	@RequestMapping(value = "/login")
-	public String login(Model model) {
+	public String login(HttpServletRequest request, Model model) {
 		logger.info(MANAGE_NAME + "显示后台管理登录页面");
+		requestMessageProcess(request);
 
 		return "login";
 	}

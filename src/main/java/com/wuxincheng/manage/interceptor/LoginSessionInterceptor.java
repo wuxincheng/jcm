@@ -44,9 +44,13 @@ public class LoginSessionInterceptor implements HandlerInterceptor {
 					.getAttribute("admins");
 
 			if (null == admins) {
+				String msg = "您的登录已失效，请重新登录！";
+				// encode一下，否则页面接收不到值
+				msg = java.net.URLEncoder.encode(msg.toString(), "utf-8");
+				
 				logger.info("后台管理员Admins登录Session失效，跳转到登录页面");
 				response.sendRedirect(request.getContextPath()
-						+ "/admins/login"); // 重定向
+						+ "/admins/login?info=" + msg); // 重定向
 				return false;
 			}
 
