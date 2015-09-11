@@ -21,7 +21,7 @@
   </resultMap>
   
   <select id="queryPagerByMap" parameterClass="java.util.Map" resultMap="EventMapping">
-    SELECT t.* FROM nkt_event t WHERE eventType = #eventType#
+    SELECT t.* FROM nkt_event t WHERE eventType = #eventType# ORDER BY updateTime DESC
   </select>
   
   <select id="queryCountByEventType" parameterClass="java.lang.String" resultClass="java.lang.Integer">
