@@ -45,5 +45,9 @@
       creater = #creater#, updateTime = #updateTime#, eventState = #eventState#
     WHERE eventid = #eventid#
   </update>
+  
+  <delete id="deleteById" parameterClass="java.lang.String">
+    DELETE FROM nkt_event WHERE eventid = #eventid#
+  </delete>
 
 </sqlMap>

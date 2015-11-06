@@ -103,12 +103,12 @@ public class EventController extends BaseController {
 	}
 
 	@RequestMapping(value = "/delete")
-	public String delete(Model model, String eventid) {
+	public String delete(Model model, String eventid, String eventType) {
 		logger.info("{}删除动态 eventid={}", MANAGE_NAME, eventid);
 
 		eventService.deleteById(eventid);
 		model.addAttribute(Constants.MSG_SUCCESS, "删除成功");
 
-		return "redirect:list";
+		return "redirect:list?eventType="+eventType;
 	}
 }

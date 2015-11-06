@@ -16,5 +16,6 @@
   <script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
   <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
   <script src="<%=request.getContextPath()%>/assets/js/docs.min.js"></script>
+  <script src="<%=request.getContextPath()%>/assets/vendor/layer/layer.js"></script>
 </body>
 </html>

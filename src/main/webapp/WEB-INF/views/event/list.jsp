@@ -65,8 +65,7 @@
                     <a href="${root}/manage/event/detail?eventid=${obj.eventid}">
                       <button type="button" class="btn btn-primary btn-sm">修改</button>
                     </a>
-                    <button type="button" class="btn btn-primary btn-sm"
-                      onclick="if(confirm('您确定要删除吗?')) document.location = '${root}/manage/news/send/rollback?newsId=${obj.eventid}';">删除</button>
+                    <button type="button" onclick="delEvent('${obj.eventid}');" class="btn btn-primary btn-sm">删除</button>
                   </td>
                 </tr>
               </c:forEach>
@@ -88,6 +87,17 @@
   <jsp:include page="../bottom.jsp" />
 </body>
 <script type="text/javascript">
+function delEvent(eventid){
+	layer.confirm('您确定要删除吗？', {
+	    btn: ['确定','取消'] //按钮
+	}, function(){
+		var eventType = "${eventType}";
+		document.location = '${root}/manage/event/delete?eventid='+eventid+'&eventType='+eventType;
+	}, function(){
+	    layer.msg('并没有删除哦');
+	});
+}
+
 function selected(flag) {
 	// 获取选中的CheckBox
 	var newsIds = $('input[id="subcheck"]:checked').map(function() {
