@@ -4,17 +4,17 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
-	config.height = 300; // 设置高度
+	config.height = 200; // 设置高度
 	// config.width = 1200; // 设置宽度
 
 	config.language = 'zh-cn'; // 中文配置zh-cn / en
 
-	config.filebrowserBrowseUrl = '/jcm/assets/vendor/ckfinder/ckfinder.html';    
-    config.filebrowserImageBrowseUrl = '/jcm/assets/vendor/ckfinder/ckfinder.html?type=Images';
-    config.filebrowserFlashBrowseUrl = '/jcm/assets/vendor/ckfinder/ckfinder.html?type=Flash';
-	config.filebrowserUploadUrl = '/jcm/assets/vendor/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files';
-	config.filebrowserImageUploadUrl = '/jcm/assets/vendor/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images';
-	config.filebrowserFlashUploadUrl = '/jcm/assets/vendor/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash';
+	config.filebrowserBrowseUrl = '/jcm/ckfinder/ckfinder.html';    
+    config.filebrowserImageBrowseUrl = '/jcm/ckfinder/ckfinder.html?type=Images';
+    config.filebrowserFlashBrowseUrl = '/jcm/ckfinder/ckfinder.html?type=Flash';
+	config.filebrowserUploadUrl = '/jcm/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files';
+	config.filebrowserImageUploadUrl = '/jcm/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images';
+	config.filebrowserFlashUploadUrl = '/jcm/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash';
 
 	// 配置指定字体
 	// config.font_names = '微软雅黑;Arial;宋体;楷体_GB2312;新宋体;黑体;隶书;幼圆;Courier New';

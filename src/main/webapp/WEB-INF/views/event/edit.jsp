@@ -5,8 +5,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<script src="${root}/assets/vendor/ckeditor/ckeditor.js" type="text/javascript"></script>
-	<script src="${root}/assets/vendor/ckfinder/ckfinder.js" type="text/javascript"></script>
+	<script src="${root}/ckeditor/ckeditor.js" type="text/javascript"></script>
+	<script src="${root}/ckfinder/ckfinder.js" type="text/javascript"></script>
     <link rel="stylesheet" href="${root}/assets/vendor/croppic/croppic.css" />
 	<link href="${root}/assets/images/logo.png" type="image/x-icon" rel="shortcut icon" />
     <link href="${root}/assets/images/logo.png" type="image/x-icon" rel="icon" />
