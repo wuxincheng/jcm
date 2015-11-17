@@ -7,7 +7,6 @@
 <meta charset="utf-8">
 <link href="${root}/assets/images/logo.png" type="image/x-icon" rel="shortcut icon" />
 <link href="${root}/assets/images/logo.png" type="image/x-icon" rel="icon" />
-
 <title>南口堂网站后台管理- V1.0</title>
 
 <link href="${root}/assets/css/bootstrap.css" rel="stylesheet">
