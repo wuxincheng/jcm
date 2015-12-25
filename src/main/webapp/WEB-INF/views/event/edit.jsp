@@ -34,7 +34,7 @@
 					</div>
                     <div class="form-group">
                       <label for="title">首页图片（图片长宽比例：450*300）：</label>
-                      <input type="hidden" name="eventIndexImg" id="eventIndexImg" />
+                      <input type="hidden" name="eventIndexImg" id="eventIndexImg" value="${event.eventIndexImg}" />
                       <div style="width: 450px; height: 300px; overflow: hidden;" class="control-img cropContainer"
                         id="eventIndexImgCrop">
                         <c:if test="${not empty event.eventIndexImg}">

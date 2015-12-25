@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Share">
+  <typeAlias alias="Share" type="com.wuxincheng.manage.model.Share" />
+
+  <resultMap class="Share" id="ShareMapping">
+    <result property="shareid" column="shareid" />
+    <result property="shareType" column="shareType" />
+    <result property="shareContent" column="shareContent" />
+    <result property="shareImage" column="shareImage" />
+    <result property="shareTag" column="shareTag" />
+    <result property="shareTime" column="shareTime" />
+    <result property="shareState" column="shareState" />
+  </resultMap>
+  
+  <select id="queryPagerByMap" parameterClass="java.util.Map" resultMap="ShareMapping">
+    SELECT t.* FROM nkt_share t WHERE shareType = #shareType# ORDER BY shareTime DESC
+  </select>
+  
+  <select id="queryCountByShareType" parameterClass="java.lang.String" resultClass="java.lang.Integer">
+    SELECT COUNT(*) FROM nkt_share t
+  </select>
+  
+  <select id="queryDetailById" parameterClass="java.lang.String" resultMap="ShareMapping">
+    SELECT t.* FROM nkt_share t WHERE shareid = #shareid#
+  </select>
+  
+  <update id="update" parameterClass="Share">
+    UPDATE nkt_share SET shareContent=#shareContent#, shareImage=#shareImage#, 
+      shareTime=#shareTime# WHERE shareid = #shareid#
+  </update>
+  
+  <insert id="insert" parameterClass="Share">
+    INSERT INTO nkt_share (shareType, shareContent, shareImage, shareTag, shareTime, shareState) 
+    VALUES (#shareType#, #shareContent#, #shareImage#, #shareTag#, #shareTime#, #shareState#)
+  </insert>
+  
+  <delete id="deleteById" parameterClass="java.lang.String">
+    DELETE FROM nkt_share WHERE shareid = #shareid#
+  </delete>
+
+</sqlMap>

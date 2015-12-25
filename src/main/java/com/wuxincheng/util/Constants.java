@@ -20,7 +20,7 @@ public class Constants {
 	/** 信息类型: 错误信息 */
 	public static final String MSG_TYPE_DANGER = "danger";
 
-	public static final String MANAGE_NAME = "网站后台管理: ";
+	public static final String MANAGE_NAME = "后台管理: ";
 
 	/** 成功信息提示 */
 	public static final String MSG_SUCCESS = "success";

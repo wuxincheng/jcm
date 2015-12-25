@@ -25,3 +25,15 @@
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+#shareImageCrop {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.layui-layer-btn .layui-layer-btn0 {
+    background-color: #3B3534;
+    border-color: #2F2A29;
+    color: #fff;
+}

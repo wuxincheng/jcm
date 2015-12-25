@@ -127,11 +127,11 @@ body {
               </c:if>
               <div style="margin: 0px 30px 10px 30px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> <input id="adminsLogin"
-                  type="text" class="form-control" name="adminsLogin" placeholder="请输入账号" />
+                  type="text" class="form-control" name="adminsLogin" maxlength="20" autocomplete="off" placeholder="请输入账号" />
               </div>
               <div style="margin: 10px 30px 10px 30px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> <input id="adminsPwd"
-                  type="password" class="form-control" name="adminsPwd" placeholder="请输入密码" />
+                  type="password" class="form-control" name="adminsPwd" maxlength="20" placeholder="请输入密码" />
               </div>
               <div style="width: 278px;" class="form-group">
                 <button type="submit" class="btn btn-primary btn-sm btn-block">登录</button>

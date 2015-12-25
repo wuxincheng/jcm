@@ -17,7 +17,10 @@
 	Configure the location of uploaded files. See the following article for more details:
 	http://docs.cksource.com/CKFinder_2.x/Developers_Guide/Java/Configuration/baseURL_and_baseDir
 	-->
-	<baseURL>http://www.nankoutang.com/jcm/imgcache</baseURL>
+	<!-- 
+    <baseURL>http://www.nankoutang.com/jcm/imgcache</baseURL>
+     -->
+    <baseURL>http://127.0.0.1/jcm/imgcache</baseURL>
 	<baseDir></baseDir>
 	<licenseKey></licenseKey>
 	<licenseName></licenseName>

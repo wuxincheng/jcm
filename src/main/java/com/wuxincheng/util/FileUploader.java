@@ -12,9 +12,11 @@ public class FileUploader {
 	
 	private static String[] allowedExts = new String[] { ".jpeg", ".jpg", ".png", ".JPEG", ".JPG", ".PNG" };
 	
-    private String basePath = "/root/tomcat/apache-tomcat-7.0.47/webapps/jcm/imgcache/images/index/";
-
-    private String baseUrl = "http://www.nankoutang.com/jcm/imgcache/images/index/";
+    //private String basePath = "/root/tomcat/apache-tomcat-7.0.47/webapps/jcm/imgcache/images/index/";
+    //private String baseUrl = "http://www.nankoutang.com/jcm/imgcache/images/index/";
+    
+    private String basePath = "D:/wuxc/nankoutang/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/jcm/imgcache/images/index/";
+    private String baseUrl = "http://127.0.0.1/jcm/imgcache/images/index/";
 
 	public String uploadImage(MultipartFile file) throws Exception {
         if (file == null)
