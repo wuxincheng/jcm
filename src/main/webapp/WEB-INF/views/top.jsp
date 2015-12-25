@@ -53,7 +53,7 @@
           <li><a href="${root}/manage/event/list"><span class="glyphicon glyphicon-th-list"></span> 发布管理</a></li>
           <li><a href="${root}/manage/share/list"><span class="glyphicon glyphicon-th-list"></span> 首页图片</a></li>
           <li><a href="${root}/manage/quote/list"><span class="glyphicon glyphicon-th-list"></span> 每日金句</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-th-list"></span> 技术支持</a></li>
+          <li><a href="#" id="support"><span class="glyphicon glyphicon-th-list"></span> 技术支持</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a data-toggle="modal" data-target=".logout-modal" href=""><span class="glyphicon glyphicon-log-out"></span> 退出系统</a></li>

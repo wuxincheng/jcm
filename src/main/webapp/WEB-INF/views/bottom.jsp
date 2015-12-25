@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,5 +19,17 @@
   <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
   <script src="<%=request.getContextPath()%>/assets/js/docs.min.js"></script>
   <script src="<%=request.getContextPath()%>/assets/vendor/layer/layer.js"></script>
+  
+  <script type="text/javascript">
+  	$("#support").click(function(){
+  		layer.open({
+  		    type: 2,
+  		    skin: 'layui-layer-rim', //加上边框
+  		    area: ['370px', '210px'], //宽高
+  		  	shadeClose: true,
+  		    content: '${root}/manage/support/'
+  		});
+  	});
+  </script>
 </body>
 </html>
